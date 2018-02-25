@@ -2,9 +2,8 @@ import { Injectable, Inject, Injector, NgModule } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-//import { AdminService } from '../guard/admin.service';
+import { AdminService } from '../admin/admin.service';
 import 'rxjs/add/operator/do';
-
 
 // tslint:disable-next-line:max-line-length
 // https://stackoverflow.com/questions/47417899/angular-4-and-oauth-intercept-401-responses-refresh-the-access-token-and-retr/47420967#47420967
@@ -23,10 +22,8 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
             return next.handle(req);
         }
 
-
         // I get here the AuthService
         const tok = this.inj.get(AdminService);
-
         const authHeader = tok.getToken();
 
         if (authHeader) {
@@ -43,8 +40,6 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
                 headers: req.headers
                     .set('Content-Type', 'application/json; charset=utf-8')
                 // .set('Access-Control-Allow-Origin', 'http://apiweblibrary.fceaunas.edu.pe')
-                // .set('Authorization', `bearer ${localStorage.getItem('token')}`)
-                // .set('Authorization', `token ${authHeader}`)
             });
             return next.handle(dupReq);
         }

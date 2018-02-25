@@ -12,11 +12,11 @@ import { ImagePipe } from '../../theme/pipe/image.pipe';
     RouterModule,
   ],
   declarations: [
-    HeaderComponent, 
-    FooterComponent, 
+    HeaderComponent,
+    FooterComponent,
     ImagePipe
   ],
-  exports:[
+  exports: [
     HeaderComponent,
     FooterComponent,
     ImagePipe

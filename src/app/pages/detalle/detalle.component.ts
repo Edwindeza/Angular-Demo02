@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-//Librería de router - Angular
+// Librería de router - Angular
 
 @Component({
   selector: 'app-detalle',
@@ -9,17 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalleComponent implements OnInit {
 
-  miproducto:string;
+  miproducto: string;
   constructor(private activatedRoute: ActivatedRoute) {
-  	this.miproducto="";
+    this.miproducto = '';
   }
 
   ngOnInit() {
-  	this.activatedRoute.params 
-  		.subscribe(parametros =>{
-  			console.log(parametros.codigo);
-  			this.miproducto=parametros.codigo;
-  		})
+    this.activatedRoute.params
+      .subscribe(parametros => {
+        console.log(parametros.codigo);
+        this.miproducto = parametros.codigo;
+      });
   }
 
 }
